@@ -10,7 +10,7 @@ public class Produto {
     @Id
     @Column(name = "id")
     @NotNull
-    private int id;
+    private String id;
 
     @Column(name = "item", length = 25)
     @NotNull
@@ -29,15 +29,15 @@ public class Produto {
 
     @Column(name = "preco")
     @NotNull
-    private float preco;
+    private String preco;
 
     // ---------------------------------------------------
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -73,11 +73,11 @@ public class Produto {
         this.cor = cor;
     }
 
-    public float getPreco() {
+    public String getPreco() {
         return preco;
     }
 
-    public void setPreco(float preco) {
+    public void setPreco(String preco) {
         this.preco = preco;
     }
 }

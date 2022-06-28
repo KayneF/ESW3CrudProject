@@ -10,7 +10,7 @@ public interface IProdutoController {
     void inserirProduto(Produto p) throws SQLException;
     void atualizarProduto(Produto p) throws SQLException;
     void excluirProduto(Produto p) throws SQLException;
-    Produto procurarProduto(Produto p) throws SQLException;
+    void procurarProduto(Produto p) throws SQLException;
     List<Produto> listarProdutos() throws SQLException;
 
 }

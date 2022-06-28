@@ -9,7 +9,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 import javax.swing.*;
-import java.sql.SQLException;
 
 public class PrincipalController {
 
@@ -34,7 +33,7 @@ public class PrincipalController {
     @FXML private TextArea itemDescricao;
 
 
-    @FXML void acaoCliente(ActionEvent event) throws SQLException {
+    @FXML void acaoCliente(ActionEvent event) {
         String cmd = event.getSource().toString();
         System.out.println(cmd);
 
@@ -79,12 +78,12 @@ public class PrincipalController {
 
         } else {
             Produto p = new Produto();
-            p.setId(Integer.parseInt(fieldId.getText()));
+            p.setId(fieldId.getText());
             p.setItem(fieldItem.getText().toUpperCase());
             p.setModelo(fieldModelo.getText().toUpperCase());
             p.setMarca(fieldMarca.getText().toUpperCase());
             p.setCor(fieldCor.getText().toUpperCase());
-            p.setPreco(Float.parseFloat(fieldPreco.getText().toUpperCase()));
+            p.setPreco(fieldPreco.getText());
             if (cmd.contains("Adicionar")) {
                 produtoController.inserirProduto(p);
             } else if (cmd.contains("Atualizar")) {

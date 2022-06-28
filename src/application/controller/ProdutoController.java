@@ -7,7 +7,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import org.hibernate.SessionFactory;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class ProdutoController implements IProdutoController{
@@ -34,43 +33,43 @@ public class ProdutoController implements IProdutoController{
     }
 
     @Override
-    public void inserirProduto(Produto produto) throws SQLException {
+    public void inserirProduto(Produto produto) {
         produtoDao.create(produto);
         limpar();
         listarProdutos();
     }
 
     @Override
-    public void atualizarProduto(Produto produto) throws SQLException{
+    public void atualizarProduto(Produto produto) {
         produtoDao.update(produto);
         limpar();
         listarProdutos();
     }
 
     @Override
-    public void excluirProduto(Produto produto) throws SQLException{
+    public void excluirProduto(Produto produto) {
         produtoDao.delete(produto);
         limpar();
         listarProdutos();
     }
 
     @Override
-    public Produto procurarProduto(Produto produto) throws SQLException{
+    public void procurarProduto(Produto produto) {
         limpar();
         Produto p = produtoDao.selectOne(produto);
 
-        fieldId.setText(String.valueOf(p.getId()));
+        fieldId.setText(p.getId());
         fieldItem.setText(p.getItem());
         fieldMarca.setText(p.getMarca());
         fieldModelo.setText(p.getModelo());
         fieldCor.setText(p.getCor());
-        fieldPreco.setText(String.valueOf(p.getPreco()));
+        fieldPreco.setText(p.getPreco());
 
-        return p;
+//        return p;
     }
 
     @Override
-    public List<Produto> listarProdutos() throws SQLException {
+    public List<Produto> listarProdutos() {
         limpar();
         List<Produto> listaProdutos = produtoDao.selectAll();
 

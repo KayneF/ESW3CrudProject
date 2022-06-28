@@ -6,7 +6,6 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
 import org.hibernate.SessionFactory;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class ProdutoDao implements InterfaceDao {
     }
 
     @Override
-    public void create(Produto p) throws SQLException {
+    public void create(Produto p) {
         EntityManager entityManager = sf.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
@@ -28,7 +27,7 @@ public class ProdutoDao implements InterfaceDao {
     }
 
     @Override
-    public void update(Produto p) throws SQLException{
+    public void update(Produto p) {
         EntityManager entityManager = sf.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
@@ -37,7 +36,7 @@ public class ProdutoDao implements InterfaceDao {
     }
 
     @Override
-    public void delete(Produto p) throws SQLException{
+    public void delete(Produto p) {
         EntityManager entityManager = sf.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
@@ -46,14 +45,15 @@ public class ProdutoDao implements InterfaceDao {
     }
 
     @Override
-    public Produto selectOne(Produto p) throws SQLException{
+    public Produto selectOne(Produto p) {
         EntityManager entityManager = sf.createEntityManager();
         p = entityManager.find(Produto.class, p.getItem());
         return p;
     }
 
+
     @Override
-    public List<Produto> selectAll() throws SQLException{
+    public List<Produto> selectAll() {
         List<Produto> produtos = new ArrayList<>();
         StringBuffer buffer = new StringBuffer();
         buffer.append("SELECT id, item, marca, modelo, cor, preco ");
@@ -64,12 +64,12 @@ public class ProdutoDao implements InterfaceDao {
         List<Object[]> lista = query.getResultList();
         for (Object[] obj : lista) {
             Produto produto = new Produto();
-            produto.setId(Integer.parseInt(obj[0].toString()));
+            produto.setId(obj[0].toString());
             produto.setItem(obj[1].toString());
             produto.setMarca(obj[2].toString());
             produto.setModelo(obj[3].toString());
             produto.setCor(obj[4].toString());
-            produto.setPreco(Float.parseFloat(obj[5].toString()));
+            produto.setPreco(obj[5].toString());
             produtos.add(produto);
         }
         return produtos;
