@@ -106,11 +106,11 @@
 <!--           ==========================================================================================-->
 <!--                   Produto Buttons                                                                   -->
 <!--           ==========================================================================================-->
-                  <Button fx:id="btnAdicionar" layoutX="25.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoCliente" prefHeight="30.0" prefWidth="100.0" text="Adicionar" />
-                  <Button fx:id="btnModificar" layoutX="145.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoCliente" prefHeight="30.0" prefWidth="100.0" text="Modificar" />
-                  <Button fx:id="btnProcurar" layoutX="421.0" layoutY="25.0" mnemonicParsing="false" onAction="#acaoCliente" prefHeight="30.0" prefWidth="100.0" text="Procurar" />
-                  <Button fx:id="btnExcluir" layoutX="265.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoCliente" prefHeight="30.0" prefWidth="100.0" text="Excluir" />
-                  <Button fx:id="btnListar" layoutX="385.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoCliente" prefHeight="30.0" prefWidth="100.0" text="Listar" />
+                  <Button fx:id="btnAdicionar" layoutX="25.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoProduto" prefHeight="30.0" prefWidth="100.0" text="Adicionar" />
+                  <Button fx:id="btnModificar" layoutX="145.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoProduto" prefHeight="30.0" prefWidth="100.0" text="Modificar" />
+                  <Button fx:id="btnProcurar" layoutX="421.0" layoutY="25.0" mnemonicParsing="false" onAction="#acaoProduto" prefHeight="30.0" prefWidth="100.0" text="Procurar" />
+                  <Button fx:id="btnExcluir" layoutX="265.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoProduto" prefHeight="30.0" prefWidth="100.0" text="Excluir" />
+                  <Button fx:id="btnListar" layoutX="385.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoProduto" prefHeight="30.0" prefWidth="100.0" text="Listar" />
 
 
                </children>

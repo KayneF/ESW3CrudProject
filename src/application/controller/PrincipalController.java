@@ -1,6 +1,7 @@
 package application.controller;
 
 import application.model.Produto;
+import application.model.ProdutoBuilder;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -30,16 +31,24 @@ public class PrincipalController {
     @FXML private Label labelModelo;
     @FXML private Label labelPreco;
     @FXML private TextArea textAreaList;
-    @FXML private TextArea itemDescricao;
 
 
-    @FXML void acaoCliente(ActionEvent event) {
+    @FXML void acaoProduto(ActionEvent event) {
+
         String cmd = event.getSource().toString();
         System.out.println(cmd);
 
-        ProdutoController produtoController =
-                new ProdutoController(fieldId, fieldItem, fieldMarca,
-                        fieldModelo, fieldCor, fieldPreco, textAreaList);
+        IInserirC ins = new SInserirC(fieldId, fieldItem, fieldMarca,
+                fieldModelo, fieldCor, fieldPreco, textAreaList);
+        IAtualizarC atl = new SAtualizarC(fieldId, fieldItem, fieldMarca,
+                fieldModelo, fieldCor, fieldPreco, textAreaList);
+        IExcluirC exc = new SExcluirC(fieldId, fieldItem, fieldMarca,
+                fieldModelo, fieldCor, fieldPreco, textAreaList);
+        IProcurarC pro = new SProcurarC(fieldId, fieldItem, fieldMarca,
+                fieldModelo, fieldCor, fieldPreco);
+        IListarC lst = new SListarC(fieldId, fieldItem, fieldMarca,
+                fieldModelo, fieldCor, fieldPreco, textAreaList);
+
 
         if ((cmd.contains("Adicionar") || cmd.contains("Atualizar"))
                 && (fieldId.getText().isEmpty()
@@ -74,24 +83,26 @@ public class PrincipalController {
         }
 
         else if (cmd.contains("Listar")) {
-            produtoController.listarProdutos();
+            lst.listar();
 
         } else {
-            Produto p = new Produto();
-            p.setId(fieldId.getText());
-            p.setItem(fieldItem.getText().toUpperCase());
-            p.setModelo(fieldModelo.getText().toUpperCase());
-            p.setMarca(fieldMarca.getText().toUpperCase());
-            p.setCor(fieldCor.getText().toUpperCase());
-            p.setPreco(fieldPreco.getText());
+            Produto p = ProdutoBuilder.builder()
+                    .addId(fieldId.getText())
+                    .addItem(fieldItem.getText().toUpperCase())
+                    .addMarca(fieldMarca.getText().toUpperCase())
+                    .addModelo(fieldModelo.getText().toUpperCase())
+                    .addCor(fieldCor.getText().toUpperCase())
+                    .addPreco(fieldPreco.getText())
+                    .get();
+
             if (cmd.contains("Adicionar")) {
-                produtoController.inserirProduto(p);
+                ins.inserir(p);
             } else if (cmd.contains("Atualizar")) {
-                produtoController.atualizarProduto(p);
+                atl.atualizar(p);
             } else if (cmd.contains("Excluir")) {
-                produtoController.excluirProduto(p);
+                exc.excluir(p);
             } else if (cmd.contains("Procurar")) {
-                produtoController.procurarProduto(p);
+                pro.procurar(p);
             }
         }
     }

@@ -95,11 +95,11 @@
 <!--           ==========================================================================================-->
 <!--                   Produto Buttons                                                                   -->
 <!--           ==========================================================================================-->
-                  <Button fx:id="btnAdicionar" layoutX="25.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoCliente" prefHeight="30.0" prefWidth="100.0" text="Adicionar" />
-                  <Button fx:id="btnAtualizar" layoutX="145.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoCliente" prefHeight="30.0" prefWidth="100.0" text="Atualizar" />
-                  <Button fx:id="btnProcurar" layoutX="421.0" layoutY="25.0" mnemonicParsing="false" onAction="#acaoCliente" prefHeight="30.0" prefWidth="100.0" text="Procurar" />
-                  <Button fx:id="btnExcluir" layoutX="265.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoCliente" prefHeight="30.0" prefWidth="100.0" text="Excluir" />
-                  <Button fx:id="btnListar" layoutX="385.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoCliente" prefHeight="30.0" prefWidth="100.0" text="Listar" />
+                  <Button fx:id="btnAdicionar" layoutX="25.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoProduto" prefHeight="30.0" prefWidth="100.0" text="Adicionar" />
+                  <Button fx:id="btnAtualizar" layoutX="145.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoProduto" prefHeight="30.0" prefWidth="100.0" text="Atualizar" />
+                  <Button fx:id="btnProcurar" layoutX="421.0" layoutY="25.0" mnemonicParsing="false" onAction="#acaoProduto" prefHeight="30.0" prefWidth="100.0" text="Procurar" />
+                  <Button fx:id="btnExcluir" layoutX="265.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoProduto" prefHeight="30.0" prefWidth="100.0" text="Excluir" />
+                  <Button fx:id="btnListar" layoutX="385.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoProduto" prefHeight="30.0" prefWidth="100.0" text="Listar" />
 
 
 <!--           ==========================================================================================-->
@@ -118,14 +118,6 @@
 
                </children>
         </AnchorPane>
-      </content>
-    </Tab>
-
-
-
-    <Tab text="Clientes">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
       </content>
     </Tab>
   </tabs>
