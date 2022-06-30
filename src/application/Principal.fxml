@@ -86,7 +86,7 @@
                         <Font size="16.0" />
                      </font>
                   </TextField>
-                   <TextArea fx:id="itemDescricao" editable="false" layoutX="555.0" layoutY="20.0" prefHeight="240.0" prefWidth="440.0">
+                   <TextArea fx:id="itemDescricao1" editable="false" layoutX="555.0" layoutY="20.0" prefHeight="240.0" prefWidth="440.0">
                      <font>
                         <Font size="16.0" />
                      </font></TextArea>
@@ -95,11 +95,11 @@
 <!--           ==========================================================================================-->
 <!--                   Produto Buttons                                                                   -->
 <!--           ==========================================================================================-->
-                  <Button fx:id="btnAdicionar" layoutX="25.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoProduto" prefHeight="30.0" prefWidth="100.0" text="Adicionar" />
-                  <Button fx:id="btnAtualizar" layoutX="145.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoProduto" prefHeight="30.0" prefWidth="100.0" text="Atualizar" />
-                  <Button fx:id="btnProcurar" layoutX="421.0" layoutY="25.0" mnemonicParsing="false" onAction="#acaoProduto" prefHeight="30.0" prefWidth="100.0" text="Procurar" />
-                  <Button fx:id="btnExcluir" layoutX="265.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoProduto" prefHeight="30.0" prefWidth="100.0" text="Excluir" />
-                  <Button fx:id="btnListar" layoutX="385.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoProduto" prefHeight="30.0" prefWidth="100.0" text="Listar" />
+                  <Button fx:id="btnAdicionarP" layoutX="25.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoProduto" prefHeight="30.0" prefWidth="100.0" text="Adicionar" />
+                  <Button fx:id="btnAtualizarP" layoutX="145.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoProduto" prefHeight="30.0" prefWidth="100.0" text="Atualizar" />
+                  <Button fx:id="btnProcurarP" layoutX="421.0" layoutY="25.0" mnemonicParsing="false" onAction="#acaoProduto" prefHeight="30.0" prefWidth="100.0" text="Procurar" />
+                  <Button fx:id="btnExcluirP" layoutX="265.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoProduto" prefHeight="30.0" prefWidth="100.0" text="Excluir" />
+                  <Button fx:id="btnListarP" layoutX="385.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoProduto" prefHeight="30.0" prefWidth="100.0" text="Listar" />
 
 
 <!--           ==========================================================================================-->
@@ -107,7 +107,7 @@
 <!--           ==========================================================================================-->
                    <ScrollPane layoutX="25.0" layoutY="353.0">
                        <content>
-                        <TextArea fx:id="textAreaList" editable="false" prefHeight="366.0" prefWidth="968.0">
+                        <TextArea fx:id="textAreaListP" editable="false" prefHeight="366.0" prefWidth="968.0">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -120,5 +120,114 @@
         </AnchorPane>
       </content>
     </Tab>
+
+
+      <!--           ==========================================================================================-->
+      <!--                   Tab Clientes                                                                      -->
+      <!--           ==========================================================================================-->
+      <Tab text="Clientes">
+          <content>
+              <AnchorPane>
+                  <children>
+
+
+                      <!--           ==========================================================================================-->
+                      <!--                   Cliente Labels                                                                    -->
+                      <!--           ==========================================================================================-->
+                      <Label fx:id="labelNome" layoutX="24.0" layoutY="30.0" text="Nome:">
+                          <font>
+                              <Font size="16.0" />
+                          </font>
+                      </Label>
+                      <Label fx:id="labelCpf" layoutX="24.0" layoutY="70.0" text="CPF: *">
+                          <font>
+                              <Font size="16.0" />
+                          </font>
+                      </Label>
+
+                      <Label fx:id="labelEndereco" layoutX="24.0" layoutY="110.0" text="Endereco: *">
+                          <font>
+                              <Font size="16.0" />
+                          </font>
+                      </Label>
+                      <Label fx:id="labelCep" layoutX="24.0" layoutY="150.0" text="CEP: *">
+                          <font>
+                              <Font size="16.0" />
+                          </font>
+                      </Label>
+                      <Label fx:id="labelTelefone" layoutX="24.0" layoutY="190.0" text="Telefone: *">
+                          <font>
+                              <Font size="16.0" />
+                          </font>
+                      </Label>
+                      <Label fx:id="labelEmail" layoutX="24.0" layoutY="230.0" text="Email: *">
+                          <font>
+                              <Font size="16.0" />
+                          </font>
+                      </Label>
+                      <TextField fx:id="fieldNome" layoutX="121.0" layoutY="25.0" prefHeight="30.0" prefWidth="230.0" promptText="Eg: FULANO DE TAL">
+                          <font>
+                              <Font size="16.0" />
+                          </font>
+                      </TextField>
+                      <TextField fx:id="fieldCpf" layoutX="121.0" layoutY="65.0" prefHeight="30.0" prefWidth="400.0" promptText="Eg: 32165498731">
+                          <font>
+                              <Font size="16.0" />
+                          </font>
+                      </TextField>
+                      <TextField fx:id="fieldEndereco" layoutX="121.0" layoutY="105.0" prefHeight="30.0" prefWidth="400.0" promptText="Eg: RUA DE FULANO, 111">
+                          <font>
+                              <Font size="16.0" />
+                          </font>
+                      </TextField>
+                      <TextField fx:id="fieldCep" layoutX="121.0" layoutY="145.0" prefHeight="30.0" prefWidth="400.0" promptText="Eg: 03216540">
+                          <font>
+                              <Font size="16.0" />
+                          </font>
+                      </TextField>
+                      <TextField fx:id="fieldTelefone" layoutX="121.0" layoutY="185.0" prefHeight="30.0" prefWidth="400.0" promptText="Eg: 11987654321">
+                          <font>
+                              <Font size="16.0" />
+                          </font>
+                      </TextField>
+                      <TextField fx:id="fieldEmail" layoutX="121.0" layoutY="225.0" prefHeight="30.0" prefWidth="400.0" promptText="Eg: fulano.tal@email.com">
+                          <font>
+                              <Font size="16.0" />
+                          </font>
+                      </TextField>
+                      <TextArea fx:id="itemDescricao2" editable="false" layoutX="555.0" layoutY="20.0" prefHeight="240.0" prefWidth="440.0">
+                          <font>
+                              <Font size="16.0" />
+                          </font></TextArea>
+
+
+                      <!--           ==========================================================================================-->
+                      <!--                   Produto Buttons                                                                   -->
+                      <!--           ==========================================================================================-->
+                      <Button fx:id="btnAdicionarC" layoutX="25.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoCliente" prefHeight="30.0" prefWidth="100.0" text="Adicionar" />
+                      <Button fx:id="btnAtualizarC" layoutX="145.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoCliente" prefHeight="30.0" prefWidth="100.0" text="Atualizar" />
+                      <Button fx:id="btnProcurarC" layoutX="421.0" layoutY="25.0" mnemonicParsing="false" onAction="#acaoCliente" prefHeight="30.0" prefWidth="100.0" text="Procurar" />
+                      <Button fx:id="btnExcluirC" layoutX="265.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoCliente" prefHeight="30.0" prefWidth="100.0" text="Excluir" />
+                      <Button fx:id="btnListarC" layoutX="385.0" layoutY="301.0" mnemonicParsing="false" onAction="#acaoCliente" prefHeight="30.0" prefWidth="100.0" text="Listar" />
+
+
+                      <!--           ==========================================================================================-->
+                      <!--                   Produto List                                                                   -->
+                      <!--           ==========================================================================================-->
+                      <ScrollPane layoutX="25.0" layoutY="353.0">
+                          <content>
+                              <TextArea fx:id="textAreaListC" editable="false" prefHeight="366.0" prefWidth="968.0">
+                                  <font>
+                                      <Font size="14.0" />
+                                  </font>
+                              </TextArea>
+                          </content>
+                      </ScrollPane>
+
+
+                  </children>
+              </AnchorPane>
+          </content>
+      </Tab>
   </tabs>
 </TabPane>

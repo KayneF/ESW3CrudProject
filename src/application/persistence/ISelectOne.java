@@ -1,8 +1,6 @@
 package application.persistence;
 
-import application.model.Produto;
+public interface ISelectOne<T> {
 
-public interface ISelectOne {
-
-    Produto selectOne(Produto p);
+    T selectOne(T t);
 }

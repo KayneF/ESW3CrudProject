@@ -1,8 +1,6 @@
 package application.persistence;
 
-import application.model.Produto;
+public interface IDelete<T> {
 
-public interface IDelete {
-
-    void delete(Produto p);
+    void delete(T t);
 }

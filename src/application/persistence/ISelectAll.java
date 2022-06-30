@@ -1,10 +1,8 @@
 package application.persistence;
 
-import application.model.Produto;
-
 import java.util.List;
 
-public interface ISelectAll {
+public interface ISelectAll<T> {
 
-    List<Produto> selectAll();
+    List<T> selectAll();
 }

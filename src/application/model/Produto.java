@@ -31,8 +31,8 @@ public class Produto {
     @NotNull
     private String preco;
 
-    // ---------------------------------------------------
 
+    // ============================================
     public String getId() {
         return id;
     }

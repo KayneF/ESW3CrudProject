@@ -1,5 +1,7 @@
 package application.controller;
 
+import application.model.Cliente;
+import application.model.ClienteBuilder;
 import application.model.Produto;
 import application.model.ProdutoBuilder;
 import javafx.event.ActionEvent;
@@ -13,11 +15,13 @@ import javax.swing.*;
 
 public class PrincipalController {
 
-    @FXML private Button btnAdicionar;
-    @FXML private Button btnExcluir;
-    @FXML private Button btnListar;
-    @FXML private Button btnAtualizar;
-    @FXML private Button btnProcurar;
+    // Produto
+    // ==============================================
+    @FXML private Button btnAdicionarP;
+    @FXML private Button btnExcluirP;
+    @FXML private Button btnListarP;
+    @FXML private Button btnAtualizarP;
+    @FXML private Button btnProcurarP;
     @FXML private TextField fieldCor;
     @FXML private TextField fieldId;
     @FXML private TextField fieldItem;
@@ -30,27 +34,51 @@ public class PrincipalController {
     @FXML private Label labelMarca;
     @FXML private Label labelModelo;
     @FXML private Label labelPreco;
-    @FXML private TextArea textAreaList;
+    @FXML private TextArea textAreaListP;
 
 
+    // Cliente
+    // ==============================================
+    @FXML private Button btnAdicionarC;
+    @FXML private Button btnExcluirC;
+    @FXML private Button btnListarC;
+    @FXML private Button btnAtualizarC;
+    @FXML private Button btnProcurarC;
+    @FXML private TextField fieldNome;
+    @FXML private TextField fieldCpf;
+    @FXML private TextField fieldEndereco;
+    @FXML private TextField fieldCep;
+    @FXML private TextField fieldTelefone;
+    @FXML private TextField fieldEmail;
+    @FXML private Label labelNome;
+    @FXML private Label labelCpf;
+    @FXML private Label labelEndereco;
+    @FXML private Label labelCep;
+    @FXML private Label labelTelefone;
+    @FXML private Label labelEmail;
+    @FXML private TextArea textAreaListC;
+
+
+    // Action Produto
+    // ==============================================
     @FXML void acaoProduto(ActionEvent event) {
 
-        String cmd = event.getSource().toString();
-        System.out.println(cmd);
+        String cmdP = event.getSource().toString();
+        System.out.println(cmdP);
 
-        IInserirC ins = new SInserirC(fieldId, fieldItem, fieldMarca,
-                fieldModelo, fieldCor, fieldPreco, textAreaList);
-        IAtualizarC atl = new SAtualizarC(fieldId, fieldItem, fieldMarca,
-                fieldModelo, fieldCor, fieldPreco, textAreaList);
-        IExcluirC exc = new SExcluirC(fieldId, fieldItem, fieldMarca,
-                fieldModelo, fieldCor, fieldPreco, textAreaList);
-        IProcurarC pro = new SProcurarC(fieldId, fieldItem, fieldMarca,
+        IInserir insP = new SInserirProduto(fieldId, fieldItem, fieldMarca,
+                fieldModelo, fieldCor, fieldPreco, textAreaListP);
+        IAtualizar atlP = new SAtualizarProduto(fieldId, fieldItem, fieldMarca,
+                fieldModelo, fieldCor, fieldPreco, textAreaListP);
+        IExcluir excP = new SExcluirProduto(fieldId, fieldItem, fieldMarca,
+                fieldModelo, fieldCor, fieldPreco, textAreaListP);
+        IProcurar proP = new SProcurarProduto(fieldId, fieldItem, fieldMarca,
                 fieldModelo, fieldCor, fieldPreco);
-        IListarC lst = new SListarC(fieldId, fieldItem, fieldMarca,
-                fieldModelo, fieldCor, fieldPreco, textAreaList);
+        IListar lstP = new SListarProdutos(fieldId, fieldItem, fieldMarca,
+                fieldModelo, fieldCor, fieldPreco, textAreaListP);
 
 
-        if ((cmd.contains("Adicionar") || cmd.contains("Atualizar"))
+        if ((cmdP.contains("Adicionar") || cmdP.contains("Atualizar"))
                 && (fieldId.getText().isEmpty()
                 || fieldItem.getText().isEmpty()
                 || fieldMarca.getText().isEmpty()
@@ -63,7 +91,7 @@ public class PrincipalController {
                     "Erro ao adicionar/atualizar", JOptionPane.WARNING_MESSAGE);
         }
 
-        else if (cmd.contains("Excluir")
+        else if (cmdP.contains("Excluir")
                 && (fieldId.getText().isEmpty()
                 || fieldItem.getText().isEmpty()
                 || fieldMarca.getText().isEmpty()
@@ -76,14 +104,14 @@ public class PrincipalController {
                     "Erro ao excluir", JOptionPane.WARNING_MESSAGE);
         }
 
-        else if (cmd.contains("Procurar") && fieldItem.getText().isEmpty()) {
+        else if (cmdP.contains("Procurar") && fieldItem.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null,
                     "É necessário o preenchimento do campo 'item' para a busca *",
                     "Erro ao procurar", JOptionPane.WARNING_MESSAGE);
         }
 
-        else if (cmd.contains("Listar")) {
-            lst.listar();
+        else if (cmdP.contains("Listar")) {
+            lstP.listar();
 
         } else {
             Produto p = ProdutoBuilder.builder()
@@ -95,14 +123,91 @@ public class PrincipalController {
                     .addPreco(fieldPreco.getText())
                     .get();
 
-            if (cmd.contains("Adicionar")) {
-                ins.inserir(p);
-            } else if (cmd.contains("Atualizar")) {
-                atl.atualizar(p);
-            } else if (cmd.contains("Excluir")) {
-                exc.excluir(p);
-            } else if (cmd.contains("Procurar")) {
-                pro.procurar(p);
+            if (cmdP.contains("Adicionar")) {
+                insP.inserir(p);
+            } else if (cmdP.contains("Atualizar")) {
+                atlP.atualizar(p);
+            } else if (cmdP.contains("Excluir")) {
+                excP.excluir(p);
+            } else if (cmdP.contains("Procurar")) {
+                proP.procurar(p);
+            }
+        }
+    }
+
+
+    // Action Cliente
+    // ==============================================
+    @FXML void acaoCliente(ActionEvent event) {
+
+        String cmdC = event.getSource().toString();
+        System.out.println(cmdC);
+
+        IInserir insC = new SInserirCliente(fieldNome, fieldCpf, fieldEndereco,
+                fieldCep, fieldTelefone, fieldEmail, textAreaListC);
+        IAtualizar atlC = new SAtualizarCliente(fieldNome, fieldCpf, fieldEndereco,
+                fieldCep, fieldTelefone, fieldEmail, textAreaListC);
+        IExcluir excC = new SExcluirCliente(fieldNome, fieldCpf, fieldEndereco,
+                fieldCep, fieldTelefone, fieldEmail, textAreaListC);
+        IProcurar proC = new SProcurarCliente(fieldNome, fieldCpf, fieldEndereco,
+                fieldCep, fieldTelefone, fieldEmail, textAreaListC);
+        IListar lstC = new SListarClientes(fieldNome, fieldCpf, fieldEndereco,
+                fieldCep, fieldTelefone, fieldEmail, textAreaListC);
+
+
+        if ((cmdC.contains("Adicionar") || cmdC.contains("Atualizar"))
+                && (fieldNome.getText().isEmpty()
+                || fieldCpf.getText().isEmpty()
+                || fieldEndereco.getText().isEmpty()
+                || fieldCep.getText().isEmpty()
+                || fieldTelefone.getText().isEmpty()
+                || fieldEmail.getText().isEmpty()
+        )) {
+            JOptionPane.showMessageDialog(null,
+                    "É necessário o preenchimento completo do cliente *",
+                    "Erro ao adicionar/atualizar", JOptionPane.WARNING_MESSAGE);
+        }
+
+        else if (cmdC.contains("Excluir")
+                && (fieldNome.getText().isEmpty()
+                || fieldCpf.getText().isEmpty()
+                || fieldEndereco.getText().isEmpty()
+                || fieldCep.getText().isEmpty()
+                || fieldTelefone.getText().isEmpty()
+                || fieldEmail.getText().isEmpty()
+        )) {
+            JOptionPane.showMessageDialog(null,
+                    "É necessário os dados completos do cliente para exclusão *",
+                    "Erro ao excluir", JOptionPane.WARNING_MESSAGE);
+        }
+
+        else if (cmdC.contains("Procurar") && fieldCpf.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null,
+                    "É necessário o preenchimento do campo 'CPF' para a busca *",
+                    "Erro ao procurar", JOptionPane.WARNING_MESSAGE);
+        }
+
+        else if (cmdC.contains("Listar")) {
+            lstC.listar();
+
+        } else {
+            Cliente c = ClienteBuilder.builder()
+                    .addNome(fieldNome.getText().toUpperCase())
+                    .addCpf(fieldCpf.getText().toUpperCase())
+                    .addEndereco(fieldEndereco.getText().toUpperCase())
+                    .addCep(fieldCep.getText().toUpperCase())
+                    .addTelefone(fieldTelefone.getText().toUpperCase())
+                    .addEmail(fieldEmail.getText().toUpperCase())
+                    .get();
+
+            if (cmdC.contains("Adicionar")) {
+                insC.inserir(c);
+            } else if (cmdC.contains("Atualizar")) {
+                atlC.atualizar(c);
+            } else if (cmdC.contains("Excluir")) {
+                excC.excluir(c);
+            } else if (cmdC.contains("Procurar")) {
+                proC.procurar(c);
             }
         }
     }
